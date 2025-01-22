@@ -1,29 +1,29 @@
 services:
-  db:
-    image: postgres:16
-    container_name: db
-    restart: unless-stopped
-    healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U postgres"]
-      interval: 5s
-      timeout: 5s
-      retries: 5
-    environment:
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
-    volumes:
-      - ./pgdata10:/var/lib/postgresql/data
-      - ./confs/init.sql:/docker-entrypoint-initdb.d/init.sql
-    networks:
-      - lara10-network
+#  db:
+#    image: postgres:16
+#    container_name: db
+#    restart: unless-stopped
+#    healthcheck:
+#      test: ["CMD-SHELL", "pg_isready -U postgres"]
+#      interval: 5s
+#      timeout: 5s
+#      retries: 5
+#    environment:
+#      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+#    volumes:
+#      - ./pgdata10:/var/lib/postgresql/data
+#      - ./confs/init.sql:/docker-entrypoint-initdb.d/init.sql
+#    networks:
+#      - lara10-network
 
   app:
     build:
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile_alpine
     container_name: laravel-app
     ports:
-      - "${LPORT}:81"
-    volumes:
-      - ./html:/var/www/html
+      - "${LPORT}:8080"
+#    volumes:
+#      - ./html:/var/www/html
     environment:
       DB_CONNECTION: ${LDB_CONNECTION}
       DB_HOST: ${LDB_HOST}
@@ -33,21 +33,21 @@ services:
       DB_PASSWORD: ${LDB_PASSWORD}
     restart: unless-stopped
     tty: true
-    depends_on:
-      db:
-        condition: service_healthy
+#    depends_on:
+#      db:
+#        condition: service_healthy
     networks:
       - lara10-network
 
-  adminer:
-    image: adminer:latest
-    ports:
-      - "${ADMINER_PORT}:8080"
-    environment:
-      ADMINER_USERNAME: ${ADMINER_USERNAME}
-      ADMINER_PASSWORD: ${ADMINER_PASSWORD}
-    networks:
-      - lara10-network
+#  adminer:
+#    image: adminer:latest
+#    ports:
+#      - "${ADMINER_PORT}:8080"
+#    environment:
+#      ADMINER_USERNAME: ${ADMINER_USERNAME}
+#      ADMINER_PASSWORD: ${ADMINER_PASSWORD}
+#    networks:
+#      - lara10-network
 
 
 networks:
