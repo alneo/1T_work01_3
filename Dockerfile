@@ -34,7 +34,7 @@ ENV PATH="$PATH:/usr/local/bin"
 RUN chown -R www-data:www-data /var/lib/nginx
 RUN chown -R www-data:www-data /run
 
-ARG FOO=10
+ARG FOO=11
 WORKDIR /var/www/html
 
 #RUN composer create-project --prefer-dist laravel/laravel=^11.0 ./
