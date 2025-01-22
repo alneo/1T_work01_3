@@ -21,9 +21,9 @@ RUN apt-get update && apt-get install -y \
     && docker-php-ext-install pdo pgsql pdo_pgsql pdo_mysql mbstring exif pcntl bcmath gd zip intl opcache \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
-COPY ./www.conf /usr/local/etc/php-fpm.d/www.conf
-COPY ./nginx.conf /etc/nginx/conf.d/default.conf
-COPY ./php.ini /usr/local/etc/php
+COPY ./confs/www.conf /usr/local/etc/php-fpm.d/www.conf
+COPY ./confs/nginx.conf /etc/nginx/conf.d/default.conf
+COPY ./confs/php.ini /usr/local/etc/php
 RUN chown -R www-data:www-data /var/lib/nginx
 RUN chown -R www-data:www-data /run
 RUN chown -R www-data:www-data /var/www
@@ -33,7 +33,7 @@ ENV PATH="$PATH:/usr/local/bin"
 
 WORKDIR /var/www/html
 
-ADD init.sh /
+ADD ./confs/init.sh /
 RUN chmod +x /init.sh
 USER www-data
 CMD ["/init.sh"]
