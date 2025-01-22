@@ -1,0 +1,50 @@
+services:
+  db:
+    image: postgres:16
+    container_name: db
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    environment:
+      POSTGRES_DB: laravel
+      POSTGRES_USER: laravel
+      POSTGRES_PASSWORD: laravel123
+    volumes:
+      - ./pgdata10:/var/lib/postgresql/data
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - lara10-network
+
+  app:
+    build:
+      dockerfile: Dockerfile
+    container_name: laravel-app
+    ports:
+      - "8080:81"
+    volumes:
+      - ./html:/var/www/html
+    restart: unless-stopped
+    tty: true
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - lara10-network
+
+  adminer:
+    image: adminer:latest
+    ports:
+      - "8081:8080"
+    environment:
+      ADMINER_USERNAME: admin
+      ADMINER_PASSWORD: password
+    networks:
+      - lara10-network
+
+
+networks:
+  lara10-network:
+    driver: bridge

@@ -1,0 +1,2 @@
+CREATE USER laravel01 WITH PASSWORD 'laravel01_123!';
+CREATE DATABASE laravel01 WITH OWNER laravel01;
