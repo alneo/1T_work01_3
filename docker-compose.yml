@@ -22,8 +22,8 @@ services:
     container_name: laravel-app
     ports:
       - "${LPORT}:8080"
-#    volumes:
-#      - ./html:/var/www/html
+    volumes:
+      - ./html:/var/www/html
     environment:
       DB_CONNECTION: ${LDB_CONNECTION}
       DB_HOST: ${LDB_HOST}
