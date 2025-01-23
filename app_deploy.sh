@@ -1,11 +1,8 @@
 #!/bin/sh
-
-#curl -sS https://getcomposer.org/installer | php82 -- --install-dir=/usr/local/bin --filename=composer
-#PATH="$PATH:/usr/local/bin"
-composer update
-composer install --cache-dir=/var/www/cache
-# Обновление cache приложения
+composer install --no-dev
 php artisan optimize
+php artisan migrate
+
 
 # Запуск приложения
-supervisord -c  "/etc/supervisor/conf.d/supervisord.conf" && php-fpm -D &&  nginx -g "daemon off;"
+supervisord -c "/etc/supervisor.d/supervisord.ini"
