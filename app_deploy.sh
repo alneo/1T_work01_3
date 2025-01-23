@@ -1,4 +1,6 @@
 #!/bin/sh
+
+
 composer install --no-dev
 php artisan optimize
 php artisan migrate

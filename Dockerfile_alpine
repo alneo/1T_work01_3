@@ -59,12 +59,20 @@ RUN ln -sf /dev/stdout /var/log/nginx/access.log
 RUN ln -sf /dev/stderr /var/log/nginx/error.log
 
 # Building process
+# если UID не 1000 то права ставятся
+#RUN adduser -D vivek -u 1001
+RUN adduser -D vivek
 COPY ./html .
 
-RUN chown -R nobody:nobody /var/www/html/storage
+RUN chown -R vivek:vivek /var/www/html
+RUN chown vivek:vivek /run/php/php8.2-fpm.pid
+RUN chown vivek:vivek /run/nginx/nginx.pid
+RUN chown vivek:vivek /var/lib/nginx/logs/error.log
+RUN chown -R vivek:vivek /var/lib/nginx
 
 EXPOSE 80
 
 COPY ./app_deploy.sh /var/www/app_deploy.sh
 RUN ["chmod", "+x", "/var/www/app_deploy.sh"]
+USER vivek
 CMD [ "sh", "/var/www/app_deploy.sh" ]
