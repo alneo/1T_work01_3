@@ -60,11 +60,11 @@ RUN ln -sf /dev/stderr /var/log/nginx/error.log
 
 # Building process
 # если UID не 1000 то права ставятся
-RUN adduser -D vivek -u 1001
+RUN adduser -D vivek
 #RUN adduser -D vivek
 COPY ./html .
 
-#RUN chown -R vivek:vivek /var/www/html
+RUN chown -R vivek:vivek /var/www/html
 RUN chown -R vivek:vivek /var/lib/nginx
 RUN chown vivek:vivek /run/php/php8.2-fpm.pid
 RUN chown vivek:vivek /run/nginx/nginx.pid
