@@ -60,8 +60,7 @@ RUN ln -sf /dev/stderr /var/log/nginx/error.log
 
 # Building process
 # если UID не 1000 то права ставятся
-RUN adduser -D vivek
-#RUN adduser -D vivek
+RUN adduser -D vivek -u 1001
 COPY ./html .
 
 RUN chown -R vivek:vivek /var/www/html
@@ -71,7 +70,6 @@ RUN chown vivek:vivek /run/nginx/nginx.pid
 RUN chown vivek:vivek /var/lib/nginx/logs/error.log
 
 #https://blog.container-solutions.com/understanding-volumes-docker
-#VOLUME /html
 
 EXPOSE 80
 

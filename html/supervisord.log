@@ -55,3 +55,16 @@
 2025-01-23 19:15:50,231 INFO success: laravel-worker_00 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
 2025-01-23 19:15:50,231 INFO success: nginx entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
 2025-01-23 19:15:50,232 INFO success: php-fpm entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-01-24 05:32:07,777 CRIT could not write pidfile /var/www/html/supervisord.pid
+2025-01-24 05:32:08,781 INFO spawned: 'laravel-worker_00' with pid 109
+2025-01-24 05:32:08,783 INFO spawned: 'nginx' with pid 110
+2025-01-24 05:32:08,784 INFO spawned: 'php-fpm' with pid 111
+2025-01-24 05:32:09,805 INFO success: laravel-worker_00 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-01-24 05:32:09,806 INFO success: nginx entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-01-24 05:32:09,806 INFO success: php-fpm entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-01-24 05:32:15,622 WARN exited: laravel-worker_00 (exit status 1; not expected)
+2025-01-24 05:32:16,628 INFO spawned: 'laravel-worker_00' with pid 135
+2025-01-24 05:32:17,630 INFO success: laravel-worker_00 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-01-24 05:32:21,151 WARN exited: laravel-worker_00 (exit status 1; not expected)
+2025-01-24 05:32:22,154 INFO spawned: 'laravel-worker_00' with pid 139
+2025-01-24 05:32:23,156 INFO success: laravel-worker_00 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)

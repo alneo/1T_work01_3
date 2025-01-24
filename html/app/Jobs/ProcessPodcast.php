@@ -4,6 +4,7 @@ namespace App\Jobs;
 
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Queue\Queueable;
+use Illuminate\Support\Facades\Log;
 
 class ProcessPodcast implements ShouldQueue
 {
@@ -22,6 +23,6 @@ class ProcessPodcast implements ShouldQueue
      */
     public function handle(): void
     {
-        //
+        Log::debug('ProcessPodcast:'.date('H:i:s d.m.Y'));
     }
 }

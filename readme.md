@@ -70,35 +70,49 @@
 - [x] Сделано
 
 ## 3.4. Нужно запустить [очереди в laravel](https://laravel.com/docs/11.x/queues) в этом контейнере (что-то выполнять не нужно в очереди, достаточно того чтобы был запущен слушатель)
-- [ ] В тесте
+- [x] Сделано
   * `php artisan make:job ProcessSendingEmail`
   * Открываем созданный файл app/Jobs/ProcessSendingEmail.php и обновляем функцию handle
   * ```    
     public function handle(User $user)
     {
-        Mail::send('mail.confirm-registration', [
-            'html' => 'Ура! Подтверди свой email по ссылке - https://example.com'
-        ], function ($message) use ($user) {
-            $message->to($user->email)->subject('Подтверждение регистрации');                                                   
-        });                                                         
+        Log::debug('ProcessSendingEmail:'.date('H:i:s d.m.Y'));                                                       
     }
     ```
   * Сейчас наш обработчик получает модель пользователя и отсылает ему письмо с помощью стандартного пакета Mail в Laravel
-  * Отправить новое событие в очередь:
-  * `ProcessSendingEmail::dispatch($podcast);`
+  * Отправить новое событие в очередь, `routes/web.php`:
   * ```
-    public function register(Request $request)                             
-    {                                                               
-    // .... code                                              
-    ProcessSendingEmail::dispatch($user);                      
-    // .... code                                                       
-    }
+    use App\Jobs\ProcessSendingEmail;
+    use App\Jobs\ProcessPodcast;
+    use Illuminate\Support\Facades\Route;
+    
+    Route::get('/', function () {
+       ProcessSendingEmail::dispatch();
+       ProcessPodcast::dispatch();
+       return view('welcome');
+    });
     ```
   * После вызова функции dispatch новое событие тут же улетит в нашу очередь, а нам лишь остаётся запустить обработчик нашей очереди и ждать, когда письмо отправится пользователю.
   * Запускаем обработчик всех событий в консоли командой:
   * `php artisan queue:work`
+  * В данном случаем обработчик запущен в `docker/supervisord.ini`
+  * ```
+    [program:laravel-worker]
+    process_name=%(program_name)s_%(process_num)02d
+    command=php /var/www/html/artisan queue:work
+    autostart=true
+    autorestart=true
+    stopasgroup=true
+    killasgroup=true
+    numprocs=1
+    redirect_stderr=true
+    stdout_logfile=/var/www/html/storage/logs/worker.log
+    stopwaitsecs=3600
+    stdout_logfile_maxbytes=5MB
+    ```
   * После запуска обработчика все наши события будут поочередно обрабатываться, и если у нас в очереди было 100 писем на отправку, то последнее письмо явно отправится не скоро и будет примерно, как на первой картинке, когда все ждут в очереди.
-  * ![laravel_queues.png](help/laravel_queues.png)
+  * ![storage/logs/worker.log](help/laravel_queues.png)
+  * ![storage/logs/laravel.log](help/laravel_queues_01.png)
 
 ## 3.5. Добавить мультистейдж сборку приложения
 - [ ] В работе

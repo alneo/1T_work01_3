@@ -4,6 +4,7 @@ namespace App\Jobs;
 
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Queue\Queueable;
+use Illuminate\Support\Facades\Log;
 
 class ProcessSendingEmail implements ShouldQueue
 {
@@ -22,7 +23,7 @@ class ProcessSendingEmail implements ShouldQueue
      */
     public function handle()
     {
-        echo 'ProcessSendingEmail:'.date('H:i:s d.m.Y').PHP_EOL;
+        Log::debug('ProcessSendingEmail:'.date('H:i:s d.m.Y'));
     }
 
 }
