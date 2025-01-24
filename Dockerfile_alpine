@@ -1,4 +1,4 @@
-FROM alpine:3.21
+FROM alpine:3.21 as build
 
 WORKDIR /var/www/html/
 
@@ -75,5 +75,13 @@ EXPOSE 80
 
 COPY ./app_deploy.sh /var/www/app_deploy.sh
 RUN ["chmod", "+x", "/var/www/app_deploy.sh"]
+#USER vivek
+#CMD [ "sh", "/var/www/app_deploy.sh" ]
+
+FROM alpine:3.21 as production
+RUN adduser -D vivek -u 1001
+# --from=build: файлы будут скопированы из другого образа с именем "build". Этот образ должен быть определен ранее в Dockerfile.
+# /var/www: Это путь к файлу или директории, которые нужно скопировать из образа "build".
+COPY --from=build /var/www /var/www
 USER vivek
 CMD [ "sh", "/var/www/app_deploy.sh" ]
