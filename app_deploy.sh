@@ -1,6 +1,6 @@
 #!/bin/sh
 
-composer install
+#composer install
 php artisan key:generate
 php artisan optimize
 php artisan make:queue-table

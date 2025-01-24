@@ -80,3 +80,44 @@
 2025-01-24 05:53:10,370 WARN exited: laravel-worker_00 (exit status 1; not expected)
 2025-01-24 05:53:11,377 INFO spawned: 'laravel-worker_00' with pid 156
 2025-01-24 05:53:12,379 INFO success: laravel-worker_00 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-01-24 19:41:17,595 INFO supervisord started with pid 40
+2025-01-24 19:41:18,599 INFO spawned: 'laravel-worker_00' with pid 41
+2025-01-24 19:41:18,601 INFO spawned: 'nginx' with pid 42
+2025-01-24 19:41:18,605 INFO spawned: 'php-fpm' with pid 43
+2025-01-24 19:41:19,658 INFO success: laravel-worker_00 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-01-24 19:41:19,658 INFO success: nginx entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-01-24 19:41:19,659 INFO success: php-fpm entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-01-24 20:09:45,995 INFO supervisord started with pid 40
+2025-01-24 20:09:46,999 INFO spawned: 'laravel-worker_00' with pid 41
+2025-01-24 20:09:47,001 INFO spawned: 'nginx' with pid 42
+2025-01-24 20:09:47,002 INFO spawned: 'php-fpm' with pid 43
+2025-01-24 20:09:48,041 INFO success: laravel-worker_00 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-01-24 20:09:48,041 INFO success: nginx entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-01-24 20:09:48,041 INFO success: php-fpm entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-01-24 20:16:27,897 INFO supervisord started with pid 40
+2025-01-24 20:16:28,900 INFO spawned: 'laravel-worker_00' with pid 41
+2025-01-24 20:16:28,902 INFO spawned: 'nginx' with pid 42
+2025-01-24 20:16:28,904 INFO spawned: 'php-fpm' with pid 43
+2025-01-24 20:16:29,965 INFO success: laravel-worker_00 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-01-24 20:16:29,965 INFO success: nginx entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-01-24 20:16:29,966 INFO success: php-fpm entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-01-24 20:46:37,153 CRIT could not write pidfile /var/www/html/supervisord.pid
+2025-01-24 20:46:38,156 INFO spawnerr: unknown error making dispatchers for 'laravel-worker_00': EACCES
+2025-01-24 20:46:38,158 INFO spawned: 'nginx' with pid 36
+2025-01-24 20:46:38,159 INFO spawned: 'php-fpm' with pid 37
+2025-01-24 20:46:39,200 INFO spawnerr: unknown error making dispatchers for 'laravel-worker_00': EACCES
+2025-01-24 20:46:39,201 INFO success: nginx entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-01-24 20:46:39,201 INFO success: php-fpm entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-01-24 20:46:41,205 INFO spawnerr: unknown error making dispatchers for 'laravel-worker_00': EACCES
+2025-01-24 20:46:44,210 INFO spawnerr: unknown error making dispatchers for 'laravel-worker_00': EACCES
+2025-01-24 20:46:44,211 INFO gave up: laravel-worker_00 entered FATAL state, too many start retries too quickly
+2025-01-24 20:54:23,513 CRIT could not write pidfile /var/www/html/supervisord.pid
+2025-01-24 20:54:24,517 INFO spawnerr: unknown error making dispatchers for 'laravel-worker_00': EACCES
+2025-01-24 20:54:24,518 INFO spawned: 'nginx' with pid 36
+2025-01-24 20:54:24,520 INFO spawned: 'php-fpm' with pid 37
+2025-01-24 20:54:25,554 INFO spawnerr: unknown error making dispatchers for 'laravel-worker_00': EACCES
+2025-01-24 20:54:25,555 INFO success: nginx entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-01-24 20:54:25,555 INFO success: php-fpm entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-01-24 20:54:27,559 INFO spawnerr: unknown error making dispatchers for 'laravel-worker_00': EACCES
+2025-01-24 20:54:30,895 INFO spawnerr: unknown error making dispatchers for 'laravel-worker_00': EACCES
+2025-01-24 20:54:30,895 INFO gave up: laravel-worker_00 entered FATAL state, too many start retries too quickly

@@ -19,6 +19,7 @@ services:
   app:
     build:
       dockerfile: Dockerfile_alpine
+      target: production
     container_name: laravel-app
     ports:
       - "${LPORT}:80"
